@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mis Reservas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<a href="/dashboard">
+    <button>Volver al Dashboard</button>
+</a>
+
+<h1>Mis Reservas</h1>
+
+{% if reservas %}
+
+    {% for r in reservas %}
+
+    <div class="card">
+
+        <p><strong>Usuario:</strong> {{ r.usuario }}</p>
+
+        <p><strong>Recurso:</strong> {{ r.recurso }}</p>
+
+        <p><strong>Fecha:</strong> {{ r.fecha }}</p>
+
+        <p><strong>Hora:</strong> {{ r.hora }}</p>
+
+        <p><strong>Estado:</strong> {{ r.estado }}</p>
+
+    </div>
+
+    {% endfor %}
+
+{% else %}
+
+    <p>No tienes reservas registradas.</p>
+
+{% endif %}
+
+</body>
+</html>

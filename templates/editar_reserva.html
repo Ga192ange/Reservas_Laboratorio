@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Reserva</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<h1>Editar Reserva</h1>
+
+<form action="/actualizar_reserva/{{ id }}" method="POST">
+
+    <input
+        type="text"
+        name="usuario"
+        value="{{ reserva.usuario }}"
+        required>
+
+    <br><br>
+
+    <input
+        type="text"
+        name="recurso"
+        value="{{ reserva.recurso }}"
+        required>
+
+    <br><br>
+
+    <input
+        type="date"
+        name="fecha"
+        value="{{ reserva.fecha }}"
+        required>
+
+    <br><br>
+
+    <input
+        type="time"
+        name="hora"
+        value="{{ reserva.hora }}"
+        required>
+
+    <br><br>
+
+    <button type="submit">
+        Actualizar Reserva
+    </button>
+
+</form>
+
+<br>
+
+<a href="/reservas">
+    <button>Volver</button>
+</a>
+
+</body>
+</html>

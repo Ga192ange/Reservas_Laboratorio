@@ -1,0 +1,9 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<h1>Editar recurso</h1>
+
+<form action="/actualizar/{{ id }}" method="POST">
+    <input name="nombre" value="{{ recurso.nombre }}">
+    <input name="descripcion" value="{{ recurso.descripcion }}">
+    <input name="estado" value="{{ recurso.estado }}">
+    <button>Actualizar</button>
+</form>

@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="mensaje">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+
+
+<h1>🧪 ReservaLab</h1>
+
+<h2>Bienvenido {{ nombre }}</h2>
+
+<h3>Rol: {{ rol }}</h3>
+
+<div class="dashboard">
+
+    <div class="stat">
+        <h2>Total Recursos</h2>
+        <h3>{{ total_recursos }}</h3>
+    </div>
+
+    <div class="stat">
+        <h2>Reservas</h2>
+        <h3>{{ total_reservas }}</h3>
+    </div>
+
+    <div class="stat">
+        <h2>Usuarios</h2>
+        <h3>{{ total_usuarios }}</h3>
+    </div>
+
+</div>
+
+<div class="menu">
+
+{% if rol == "admin" %}
+<a href="/recursos">
+<button>Gestionar Recursos</button>
+</a>
+{% endif %}
+
+<a href="/reservas">
+<button>Gestionar Reservas</button>
+</a>
+
+<a href="/mis_reservas">
+<button>Mis Reservas</button>
+</a>
+
+<a href="/logout">
+<button>Cerrar Sesión</button>
+</a>
+
+</div>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Reservas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+</head>
+<body>
+    
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="mensaje">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+
+
+<a href="/dashboard">
+    <button>Volver al Dashboard</button>
+</a>
+
+<h1>Sistema de Reservas</h1>
+
+<h2>Crear Reserva</h2>
+
+<div class="form-pequeno">
+
+<form action="/crear_reserva" method="POST">
+
+    <input type="text" name="recurso" placeholder="Recurso" required>
+
+    <input type="date" name="fecha" required>
+
+    <input type="time" name="hora" required>
+
+    <button type="submit">
+        Reservar
+    </button>
+
+</form>
+
+</div>
+
+<hr>
+
+<h2>Reservas actuales</h2>
+
+{% for r in reservas %}
+
+<div class="card">
+
+    <p><strong>Usuario:</strong> {{ r.usuario }}</p>
+
+    <p><strong>Recurso:</strong> {{ r.recurso }}</p>
+
+    <p><strong>Fecha:</strong> {{ r.fecha }}</p>
+
+    <p><strong>Hora:</strong> {{ r.hora }}</p>
+
+    <p><strong>Estado:</strong> {{ r.estado }}</p>
+
+    <a href="/editar_reserva/{{ r.id }}">
+        <button type="button" class="btn-editar">
+            Modificar
+        </button>
+    </a>
+
+    <a href="/cancelar_reserva/{{ r.id }}">
+        <button type="button" class="btn-eliminar">
+            Cancelar
+        </button>
+    </a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</body>
+</html>

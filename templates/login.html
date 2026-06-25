@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="mensaje">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+
+
+<div class="login-container">
+
+<h1>🧪 ReservaLab</h1>
+
+<form action="/iniciar_sesion" method="POST">
+
+    <h2>Iniciar Sesión</h2>
+
+    <input type="email" name="correo" placeholder="Correo" required>
+
+    <input type="password" name="password" placeholder="Contraseña" required>
+
+    <button type="submit">Ingresar</button>
+
+</form>
+
+<a href="/registro">
+    <button>Registrarse</button>
+</a>
+    
+</div>
+
+</body>
+</html>

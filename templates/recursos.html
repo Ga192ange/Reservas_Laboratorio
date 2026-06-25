@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ReservaLab</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="mensaje">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+
+<a href="/dashboard">
+    <button>Volver al Dashboard</button>
+</a>
+
+<h1>Sistema de Recursos</h1>
+
+<h2>Crear recurso</h2>
+
+<div class="form-pequeno">
+
+<form method="GET" action="/recursos">
+
+    <input
+        type="text"
+        name="buscar"
+        placeholder="Buscar recurso">
+
+    <button type="submit">
+        Buscar
+    </button>
+
+</form>
+
+</div>
+
+<div class="form-pequeno">
+
+<form action="/crear" method="POST">
+
+    <input type="text" name="nombre" placeholder="Nombre" required>
+
+    <input type="text" name="descripcion" placeholder="Descripción" required>
+
+    <input type="text" name="estado" placeholder="Estado" required>
+
+    <button type="submit">
+        Guardar
+    </button>
+
+</form>
+
+</div>
+
+<hr>
+
+<h2>Recursos</h2>
+
+{% for r in recursos %}
+
+<div class="card">
+
+    <p>{{ r.nombre }}</p>
+
+    <p>{{ r.descripcion }}</p>
+
+    <p>{{ r.estado }}</p>
+
+    <a href="/editar/{{ r.id }}">
+        <button type="button" class="btn-editar">
+            Editar
+        </button>
+    </a>
+
+    <a href="/eliminar/{{ r.id }}">
+        <button type="button" class="btn-eliminar">
+            Eliminar
+        </button>
+    </a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</body>
+</html>
