@@ -188,7 +188,7 @@ http://127.0.0.1:5000
 **Aplicación desplegada:**
 
 ```text
-PEGAR_AQUI_URL_DE_VERCEL
+https://reservas-laboratorio-9d2vjws7v-angelica-garcias-projects.vercel.app
 ```
 
 ---
